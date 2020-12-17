@@ -1,0 +1,31 @@
+.container {
+    padding: 0;
+    display: flex;
+    height: 100%;
+}
+.canvas-container {
+    width: 100%;
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.controls {
+    width: 220px;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .mat-form-field,
+    .mat-slider {
+        width: 100%;
+        margin: 20px 0;
+    }
+}

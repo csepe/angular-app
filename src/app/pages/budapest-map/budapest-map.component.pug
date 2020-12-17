@@ -1,0 +1,13 @@
+button.map-layers-button.dropdown(mat-mini-fab, (click)="toogleLayer(polylines)", title="Réteg megjelenítése")
+    mat-icon layers
+#map(#map)
+#side(*ngIf="sideVisible")
+    button.close-side((click)="hideSide()") X
+    .progress(*ngIf="!place")
+        .indeterminate
+    .side-inner(*ngIf="place")
+        h2(style="margin:0") {{place.name}}
+        p {{place.head}}
+        p {{place.address}}
+        app-slider([sliderData]="place.thumbs")
+        div([innerHtml]="place.text")

@@ -1,0 +1,7 @@
+.rss-reader
+    ng-container(*ngFor="let item of feedItems.items")
+        mat-card(*ngIf="item.enclosure")
+            a(target="_blank", [href]="item.link")
+                img(mat-card-image, [src]="item.enclosure.url")
+            mat-card-content
+                h3 {{item.title}}

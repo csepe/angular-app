@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="84010af998d22c6d3db4e25bccc89b3504baf65f" datatype="html">
+        <source>Koronavírus stat</source>
+         <target>Bonjour i18n !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/dashboard/dashboard.component.pug</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="32a86a36d9d417581ef2d106e10f0dc834ea276d" datatype="html">
+        <source>Napi esetszám: <x id="INTERPOLATION" equiv-text="{{covidToday.daily}}"/></source>
+         <target>Bonjour i18n !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/dashboard/dashboard.component.pug</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cf8072ba50fc7d891e2c9b65813a79919583c1e9" datatype="html">
+        <source>Napi halálozás: <x id="INTERPOLATION" equiv-text="{{covidToday.deaths}}"/></source>
+         <target>Bonjour i18n !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/dashboard/dashboard.component.pug</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ecff4fc4672db120f7335f2badf539534748a03" datatype="html">
+        <source>Index Fuji</source>
+         <target>Bonjour i18n !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/dashboard/dashboard.component.pug</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

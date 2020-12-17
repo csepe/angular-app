@@ -1,0 +1,16 @@
+.color-picker-container
+    #picker.picker
+
+    //.picker
+        .picker-row(*ngFor="let pickerRow of pickerColor")
+            .color-block.hex(*ngFor="let color of pickerRow", (click)="pickColor(color)")
+                .top([ngStyle]="{'border-bottom-color': color}")
+                .middle([ngStyle]="{'background-color': color}")
+                .bottom([ngStyle]="{'border-top-color': color}")
+
+    //.picker
+        .picker-row(*ngFor="let pickerRow of pickerColor")
+            .color-block.hex(*ngFor="let color of pickerRow", (click)="pickColor(color)")
+                svg(viewBox="0 0 22 30", width="22", height="30")
+                    path([ngStyle]="{'fill': color, 'stroke': pickedColor == color ? '#000' : color}", d="M11 4L3 9.5L3 20.5L11 26L19 20.5L19 9.5L11 4Z", stroke-width="3")
+

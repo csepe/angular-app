@@ -1,0 +1,57 @@
+.container {
+    padding: 0;
+    display: flex;
+    height: calc(100vh - 164px);
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.card-view {
+    max-width: 300px;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+
+    .mat-card {
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            opacity: 0;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+        }
+
+        &:hover {
+            a {
+                opacity: 1;
+            }
+        }
+
+        .title {
+            font-weight: 500;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.rss-reader {
+    columns: auto 4;
+    padding: 10px;
+
+    & > * {
+        -webkit-column-break-inside: avoid; /* Chrome, Safari */
+        page-break-inside: avoid; /* Theoretically FF 20+ */
+        break-inside: avoid-column; /* IE 11 */
+    }
+}

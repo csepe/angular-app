@@ -1,0 +1,17 @@
+.search-field
+    mat-form-field
+        input(matInput, placeholder="Search", type="text", [(ngModel)]="searchInputText", (keyup.enter)="search()")
+        button(mat-button, *ngIf="searchInput", matSuffix, mat-icon-button, aria-label="Clear", (click)="searchInputText=''")
+            mat-icon close
+  
+    mat-form-field(*ngIf="selectData")
+        mat-label
+        mat-select([(ngModel)]="selectInput", (selectionChange)="select()")
+            mat-option([value]="''") All
+            mat-option(*ngFor="let select of selectData", [value]="select") {{select}}
+
+    button(mat-button, mat-icon-button, (click)="search()")
+            mat-icon search
+
+    mat-spinner(*ngIf="!searchData")
+    app-error-message([errorMessage]="apiUrlError")

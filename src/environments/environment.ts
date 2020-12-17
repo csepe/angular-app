@@ -2,9 +2,31 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+
+/*let urlExists = (url) => {
+  return fetch(url, {mode: "no-cors"}).then(res => true).catch(err => false)
+}*/
+
+let urlExists = new Promise(function(resolve, reject) {
+  fetch('http://localhost:4201/api', {mode: "no-cors"}).then(res => resolve(true)).catch(err => resolve(false))
+  });
+
+let environment = {
+  apiUrl: /*'http://localhost:4201/api'*/  'https://node-app-api.glitch.me/api',
   production: false
 };
+
+urlExists.then(function(result){ 
+  //console.log(result)
+});
+
+/*
+urlExists('http://localhost:4201/api').then(result => {
+  environment.apiUrl = result ? 'http://localhost:4201/api' : 'https://node-app-api.glitch.me/api'
+  console.log(environment.apiUrl)
+})*/
+//console.log(environment)
+export {environment}
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,0 +1,14 @@
+.chart
+    mat-button-toggle-group.chartViewsSelectButton([(ngModel)]="selectedView", *ngIf="data && data.hasViewIntervals")
+        mat-button-toggle([value]="chartView", *ngFor="let chartView of chartViews", (click)="changeChartInterval()") {{chartView.name}}
+
+    span.chart-title(*ngIf="data && chartTitle") {{data.title}}
+    p(*ngIf="!data") A grafikon betöltése nem sikerült
+
+    .chart-container
+        canvas#canvas(#chart)
+
+    ul.legend(*ngIf="!data.hasLegend")
+        li(*ngFor="let legend of chartLegend")
+            span([ngStyle]="{'background-color': legend.color}") 
+            | {{legend.label}}

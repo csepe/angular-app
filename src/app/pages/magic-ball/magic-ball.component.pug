@@ -1,0 +1,10 @@
+.container
+    h3 {{title}}
+    .left
+        .ball
+            .result([style]="{'opacity': opacity}", (click)="result()") {{main}}
+            ul
+                li(*ngFor="let instruction of instructions") {{instruction}}
+            button(mat-raised-button, color="primary", (click)="magicball()") Újra
+    .symbols
+        span(*ngFor="let magicSign of magicSigns; let i = index") {{magicSign}} {{i}}

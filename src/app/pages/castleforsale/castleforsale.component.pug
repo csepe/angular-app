@@ -1,0 +1,10 @@
+.content
+    app-search-field([(searchInput)]="searchInput", (searchCallback)="getApiData()")
+    mat-spinner(*ngIf="!apiData")
+    .cards
+        mat-card.castle-card(*ngFor="let item of filterFunction(apiData)")
+            img(mat-card-image, [src]="item.img")
+            mat-card-content
+                h3 {{item.title}}
+                p {{item.desc}}
+                a([href]="item.url") {{item.url}}

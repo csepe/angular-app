@@ -1,0 +1,6 @@
+div(*ngIf="apiData")
+    mat-card(*ngFor="let data of apiData")
+        mat-card-header
+            mat-card-subtitle {{data.date}}
+        mat-card-content
+            div([innerHtml]="data.html")
