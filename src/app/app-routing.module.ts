@@ -25,6 +25,7 @@ import { BrickViewerComponent } from './pages/brick-viewer/brick-viewer.componen
 import { ControlBoardComponent } from './pages/control-board/control-board.component';
 import { GlobeComponent } from './pages/globe/globe.component';
 import { RssReaderComponent } from './pages/rss-reader/rss-reader.component';
+import { NotesComponent } from './pages/notes/notes.component';
 
 const routes: any = [
   { path: '', title: 'Dashboard', component: DashboardComponent },
@@ -58,6 +59,7 @@ const routes: any = [
   {
     path: '', title: 'Tools',
     children: [
+      { path: 'notes', title: 'Notes', component: NotesComponent },
       { path: 'magic-ball', title: 'Magic ball', component: MagicBallComponent },
       { path: 'paint', title: 'Paint', component: PaintComponent },
       { path: 'pdf-viewer', title: 'Pdf Viewer', component: PdfViewerComponent },

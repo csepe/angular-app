@@ -62,6 +62,7 @@ import { ControlBoardComponent } from './pages/control-board/control-board.compo
 import { GlobeComponent } from './pages/globe/globe.component';
 import { RssReaderComponent } from './pages/rss-reader/rss-reader.component';
 import { SpaceshipComponent } from './components/spaceship/spaceship.component';
+import { NotesComponent } from './pages/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { SpaceshipComponent } from './components/spaceship/spaceship.component';
     ControlBoardComponent,
     GlobeComponent,
     RssReaderComponent,
-    SpaceshipComponent
+    SpaceshipComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

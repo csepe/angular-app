@@ -1,0 +1,74 @@
+.notes-container {
+    display: flex;
+    padding: 20px;
+}
+
+@mixin note {
+    padding: 20px 10px;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.87);
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+
+    & > * {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    &.blue {
+        background-color: #b0cffe;
+    }
+    &.yellow {
+        background-color: #f9ff91;
+    }
+    &.red {
+        background-color: #f7b1ac;
+    }
+    &.green {
+        background-color: #dbe9c5;
+    }
+}
+
+.notes-column {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+
+    .notes {
+        min-height: 60px;
+        overflow: hidden;
+        display: block;
+        padding: 10px;
+    }
+
+    .note {
+        @include note;
+    }
+}
+
+.cdk-drag-preview {
+    @include note;
+}
+
+.cdk-drag-placeholder {
+    //opacity: 0;
+    background-color: #ccc;
+    & > * {
+        opacity: 0;
+    }
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

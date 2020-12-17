@@ -24,8 +24,25 @@ export class RssReaderComponent implements OnInit {
      let parseRSS = async (string) => {
       this.feedItems = await rssParser.parseString(string)
       console.log(this.feedItems)
+
+      this.readText(this.feedItems.items[0].title)
+      this.feedItems.items.forEach(item => {
+        //this.readText(item.title)
+      })
+      speechSynthesis.getVoices().forEach(function(voice) {
+        console.log(voice.name, voice.default ? voice.default :'');
+      });
+      
     }
 
+  }
+
+  readText(text) {
+    var msg = new SpeechSynthesisUtterance()
+    msg.lang = 'hu-HU'
+    msg.text = text
+    console.log(msg)
+    window.speechSynthesis.speak(msg)
   }
 
 }
