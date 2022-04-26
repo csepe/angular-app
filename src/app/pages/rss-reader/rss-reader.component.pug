@@ -1,0 +1,14 @@
+.content
+    app-search-field(
+        [(searchInput)]="searchInput", 
+        [searchData]="feedItems.items", 
+        (searchCallback)="getData()"
+    )
+
+    .rss-reader
+        ng-container(*ngFor="let item of feedItems.items")
+            mat-card(*ngIf="item.enclosures[0]")
+                a(target="_blank", [href]="item.link")
+                    img(mat-card-image, [src]="item.enclosures[0]?.url")
+                mat-card-content
+                    h3 {{item.title}}

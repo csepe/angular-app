@@ -1,0 +1,21 @@
+.content
+    //app-search-field(
+        [(searchInput)]="searchInput", 
+        [errorMessage]="apiUrlError",
+        (searchCallback)="getApiData({ url: searchInput })")
+
+    .container.cards-view-header
+        h1 {{ name }}
+        div
+            mat-icon.back(*ngIf="prevItem", (click)="getApiData({item:prevItem})") arrow_upward
+            p {{ cards?.length }}
+
+    .card-view(*ngIf="cards")
+        ng-container(*ngFor="let card of cards")
+            mat-card.card(
+                (click)="!card?.directory||getApiData({item:card.item})",
+                [ngClass]="{'directory': card?.directory}"
+            )
+                a.card-link([href]="card.url", target="_blank", *ngIf="!card.directory")
+                    img([src]="card.url")
+                p(*ngIf="card.directory") {{ card.name }}

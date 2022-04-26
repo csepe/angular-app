@@ -1,0 +1,9 @@
+.waves-generator {
+    display: flex;
+    height: 100%;
+    canvas {
+        display: block;
+        width: 50%;
+        height: 100%;
+    }
+}

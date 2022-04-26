@@ -1,0 +1,13 @@
+#spotify-player
+    progress.player-progress([value]="player.progress", max="100")
+    p {{player.title}}
+
+    button(mat-mini-fab, (click)="playTrack()")
+        mat-icon play_arrow
+    button(mat-mini-fab, (click)="pauseTrack()")
+        mat-icon pause
+    button(mat-mini-fab, (click)="prevTrack()")
+        mat-icon skip_previous
+    button(mat-mini-fab, (click)="nextTrack()")
+        mat-icon skip_next
+    //button(mat-button, (click)="initSpotify()") Init

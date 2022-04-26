@@ -1,0 +1,90 @@
+.magicball {
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+
+    .wrapper {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        padding: 10px;
+        border: 1px solid #0000ff1a;
+        display: inline-block;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 2px 2px 4px 0 rgba(89, 150, 255, 0.2);
+    }
+
+    .symbols,
+    .left {
+        width: 48%;
+        margin: 10px 1%;
+        float: left;
+        position: relative;
+        z-index: 1;
+        cursor: default;
+    }
+
+    .symbols {
+        column-count: 5;
+        column-fill: auto;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .ball {
+        position: relative;
+        margin: 0 auto;
+        z-index: 1;
+        height: 300px;
+        width: 300px;
+        border-radius: 100%;
+        background: #00e5ff;
+        background: radial-gradient(circle at 100px 100px, #00e5ff, #03669f);
+        border: 2px solid #03669f;
+        box-shadow: 2px 2px 5px 0 #03669f;
+        cursor: pointer;
+    }
+
+    .symbols span {
+        margin: 0 1% 4px 0;
+        display: block;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .result {
+        position: relative;
+        z-index: 100;
+        font-size: 150px;
+        width: 300px;
+        text-align: center;
+        height: 300px;
+        line-height: 290px;
+        transition: none;
+
+        &.active {
+            transition: opacity 1s ease;
+        }
+    }
+
+    ul li {
+        font-weight: bold;
+        margin: 4px 0;
+        display: block;
+        list-style-type: decimal !important;
+    }
+
+    button {
+        margin: 30px auto;
+    }
+
+    h3 {
+        font-size: 30px;
+        text-align: center;
+        margin: 10px 0 40px 0;
+        font-style: italic;
+        font-weight: bold;
+    }
+}

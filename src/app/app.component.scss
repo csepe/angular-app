@@ -1,0 +1,14 @@
+.header {
+    justify-content: space-between;
+    h3 {
+        margin: 0 40px 0 20px;
+    }
+
+    &-title {
+        & > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+

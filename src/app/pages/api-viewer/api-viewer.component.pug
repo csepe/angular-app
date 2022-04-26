@@ -1,0 +1,39 @@
+.content
+    app-search-field(
+        [(searchInput)]="apiUrl", 
+        (searchCallback)="getApiData()",
+        [errorMessage]="apiUrlError"
+    )
+
+    div(*ngIf="apiData.length")
+        .view-mode
+            mat-button-toggle-group(
+                #group="matButtonToggleGroup", 
+                appearance="legacy", 
+                [(ngModel)]="viewMode"
+            )
+                mat-button-toggle(value="card")
+                    mat-icon view_module
+                mat-button-toggle(value="table")
+                    mat-icon table_chart
+                mat-button-toggle(value="code")
+                    mat-icon code
+
+        app-table(*ngIf="viewMode === 'table'", [data]="apiData")
+
+        .card-view(*ngIf="viewMode === 'card'")
+            mat-card(*ngFor="let data of apiData")
+                ng-container(*ngFor="let item of data | keyvalue")
+                    p(
+                        *ngIf="!utils.checkUrlIsImage($any(item.value))", 
+                        [ngClass]="{'title': item.key === 'title' || item.key === 'name'}"
+                    ) {{item.value}}
+                    img(
+                        *ngIf="utils.checkUrlIsImage($any(item.value))", 
+                        [src]="item.value",  
+                        mat-card-image
+                    )
+
+        div(*ngIf="viewMode === 'code'")
+            pre
+                .code([innerHTML]="apiDataCode")

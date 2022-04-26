@@ -1,0 +1,10 @@
+.search-field{
+    padding: 20px;
+    background-color: #f7f7f7;
+    display: flex;
+    min-height: 100px;
+
+    .mat-form-field{
+        flex-grow: 1;
+    }
+}

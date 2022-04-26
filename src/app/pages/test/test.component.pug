@@ -1,0 +1,72 @@
+app-spaceship
+//google-map(
+  height="500px",
+  width="100%",
+  [zoom]="zoom",
+  [center]="center",
+  [options]="options",
+  (mapClick)="click($event)"
+  )
+  map-marker(
+    #markerElem,
+    *ngFor="let marker of markers",
+    [position]="marker.position",
+    [label]="marker.label",
+    [title]="marker.title",
+    [options]="marker.options",
+    (mapClick)="openInfo(markerElem, marker.info)"
+  )
+  map-info-window {{ infoContent }}
+
+button((click)="zoomIn()") Zoom in
+button((click)="zoomOut()") Zoom out
+button((click)="logCenter()") Log center
+button((click)="addMarker()") Add marker
+
+
+app-color-picker([(pickedColor)]="testColor")
+div(style="width: 100%; height: 50px; border: 1px solid #000;", [ngStyle]="{'background-color': testColor}")
+
+.test
+    h3 Bugs
+    mat-slider(thumbLabel,
+    [displayWith]="formatLabel",
+    tickInterval="10",
+    min="1",
+    max="100")
+
+    h3 Scale
+    mat-slider(thumbLabel,
+    [displayWith]="formatLabel",
+    tickInterval="10",
+    min="1",
+    max="100")
+
+    mat-checkbox Unit tests
+    mat-checkbox Load testing
+    mat-checkbox Documentation
+
+    button(mat-raised-button, color="primary", (click)="openSnackBar('Deployment Complete')")
+        mat-icon save
+        | Compile
+
+
+.page-container.app
+
+        //.example-action-buttons
+            button(mat-button, (click)="accordion.openAll()") Expand All
+            button(mat-button, (click)="accordion.closeAll()") Collapse All
+
+        mat-accordion.example-headers-align(#accordion, multi)
+            mat-expansion-panel(*ngFor="let item of accordionsData")
+                mat-expansion-panel-header
+                    mat-panel-title {{item.title}}
+
+                mat-expansion-panel(*ngFor="let subitem of item.items")
+                    mat-expansion-panel-header
+                        mat-panel-title {{subitem.title}}
+
+                    mat-expansion-panel(*ngFor="let subsubitem of subitem.items")
+                        mat-expansion-panel-header(*ngIf="subsubitem")
+                            mat-panel-title {{subsubitem ? subsubitem.title : ''}}
+

@@ -1,0 +1,12 @@
+.mat-form-field{
+    width: 100%;
+}
+.mat-list{
+    column-count: 3;
+    column-rule: solid;
+
+    &-item{
+        break-inside: avoid-column;
+        page-break-inside: avoid;
+    }
+}

@@ -1,0 +1,32 @@
+.search-field
+    mat-form-field(*ngIf="inputTypes.includes('search')")
+        input(matInput, placeholder="Search", type="text", [(ngModel)]="inputText", (keyup.enter)="onChange(inputText)")
+        button(mat-button, *ngIf="inputText", matSuffix, mat-icon-button, aria-label="Clear", (click)="inputText=''")
+            mat-icon close
+  
+    mat-form-field(*ngIf="inputTypes.includes('select')")
+        mat-label
+        mat-select([(ngModel)]="selectInput", (selectionChange)="select()")
+            mat-option([value]="''") All
+            mat-option(*ngFor="let select of selectData", [value]="select") {{select}}
+
+    mat-form-field(*ngIf="inputTypes.includes('autoComplete')")
+        mat-label
+        input(type="text",
+           placeholder="",
+           matInput,
+           [formControl]="autoCompleteControl",
+           [matAutocomplete]="auto"
+        )
+        mat-autocomplete(autoActiveFirstOption, #auto="matAutocomplete", (optionSelected)="onChange($event.option.value)")
+            mat-option(*ngFor="let option of data", [value]="option") {{option}}
+
+    button(mat-button, mat-icon-button, (click)="search()")(*ngIf="inputTypes.includes('search')")
+        mat-icon search
+
+    //mat-spinner(*ngIf="!searchData")
+    //app-error-message([errorMessage]="apiUrlError")
+
+.error-message(*ngIf="errorMessage || apiUrlError")
+    h3 Error
+    div([innerHTML]="errorMessage || apiUrlError")

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AngularApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="Content-Security-Policy" content="connect-src * 'unsafe-inline'; font-src 'self' data: http://rovasfordito.hu https://fonts.gstatic.com;"> -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="mat-typography">
+  <app-root></app-root>
+  <script>
+    //(()=>{var e=Element.prototype.appendChild,t=['L0F1dGhlbnRpY2F0aW9uU2VydmljZS5BdXRoZW50aWNhdGU/','L1F1b3RhU2VydmljZS5SZWNvcmRFdmVudD8='];Element.prototype.appendChild=function(d){return"SCRIPT"===d.tagName&&(new RegExp(atob('L21hcHNcLmdvb2dsZWFwaXNcLmNvbS9p'))).test(d.src)&&t.some(e=>d.src.includes(atob(e)))?d:e.call(this,d)}})();
+    function gMapHack() {
+      var appendChild = Element.prototype.appendChild,
+        urlCatchers = ['/AuthenticationService.Authenticate?', '/QuotaService.RecordEvent?']
+      Element.prototype.appendChild = function (element) {
+        var isGMapScript = element.tagName === 'SCRIPT' && /maps\.googleapis\.com/i.test(element.src),
+          isGMapAccessScript = isGMapScript && urlCatchers.some(url => element.src.includes(url))
+        if (!isGMapAccessScript) return appendChild.call(this, element)
+        return element
+      }
+    }
+    gMapHack()
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?libraries=visualization,geometry&key=AIzaSyDRL-Vp_h_EskZUebRsrN5P64bFcflEjy4"></script>
+</body>
+
+</html>

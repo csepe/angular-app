@@ -1,0 +1,20 @@
+.container
+    //button(type="button", mat-raised-button, (click)="fileInput.click()") Choose File
+    //input(hidden, (change)="onFileSelected()", #fileInput, type="file", id="file", accept=".kml")
+
+    form
+        mat-form-field
+            mat-label Map 1
+            input(matInput, placeholder="Map 1",  name="Map 1", [(ngModel)]="map1Url")
+    form    
+        mat-form-field
+            mat-label Map 2
+            input(matInput, placeholder="Map 2",  name="Map 2", [(ngModel)]="map2Url")
+
+
+    button(mat-raised-button, (click)="compare(map1Url, map2Url)") Compare
+
+    .container
+        p(*ngIf="differenceList.length") {{differenceList.length}} differences
+        mat-list
+            mat-list-item(*ngFor="let el of differenceList") {{el.name}}

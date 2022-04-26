@@ -1,0 +1,15 @@
+.content
+    app-search-field(
+        [(input)]="searchInput", 
+        [inputTypes]="['search', 'select']",
+        [data]="genres", 
+        (callback)="getApiData()"
+    )
+
+    .card-view(*ngIf="apiData")
+        ng-container(*ngFor="let item of apiData")
+            mat-card(*ngIf="!item.hidden")
+                a([href]="item.url", target="_blank")
+                    h1 {{item.title}}
+                    p IMDB: {{item.rating}}
+                img([src]="item.medium_cover_image", (error)="filterImage(item)")

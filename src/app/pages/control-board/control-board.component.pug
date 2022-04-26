@@ -1,0 +1,33 @@
+.container.control-board
+    mat-card(*ngIf="error")
+        p Connection error:
+        p {{error}}
+    mat-card
+        h1 Leds
+        .control-container
+            p Onboard led
+            button(mat-raised-button, color="primary", (click)="emit('startLed')") Led start
+            button(mat-raised-button, color="primary", (click)="emit('stopLed')") Led stop
+        .control-container
+            p RGB led
+            app-color-picker([(pickedColor)]="testColor", (pickedColorChange)="pickedColorChange()")
+        .control-container
+            p RGB led brighness
+            mat-slider(thumbLabel, tickInterval="10", min="0", max="100", [(ngModel)]="rgbLedIntensity",
+            (change)="emit('rgbLedIntensity', rgbLedIntensity)")
+
+    mat-card
+        h1 Display
+        button(mat-raised-button, color="primary", (click)="emit('lcdBlOn')") Lcd On
+        button(mat-raised-button, color="primary", (click)="emit('lcdBlOff')") Lcd Off
+        button(mat-raised-button, color="primary", (click)="emit('stopNode')") Stop Node
+        .control-container
+            p Display text
+            form
+                mat-form-field
+                    input(matInput, name="lcdText", [(ngModel)]="lcdText", (input)="emit('lcdWrite', lcdText)")
+
+    mat-card
+        h1 Sensor
+        app-chart(*ngIf="chartData && chartData.dataSets", [data]="chartData")
+        p {{chartData.title}}

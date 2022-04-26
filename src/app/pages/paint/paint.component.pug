@@ -1,0 +1,21 @@
+.container
+    .controls
+        mat-slider(tickInterval="1", min="1", max="100", [(ngModel)]="lineWidth")
+        p Size: {{lineWidth}}
+        app-color-picker([(pickedColor)]="currentColor")
+        p Color: {{currentColor}}
+
+        mat-form-field(appearance="fill")
+            mat-label Brushes
+            mat-select([(ngModel)]="activeBrush", (selectionChange)="paintChangeStyle(activeBrush)")
+                mat-optgroup(*ngFor="let brushGroup of brushes", [label]="brushGroup.group")
+                    mat-option(*ngFor="let brush of brushGroup.brushes", [value]="brush") {{brush.name}}
+        
+        button(mat-raised-button, color="primary", (click)="paintRandom()") Random
+        button(mat-raised-button, color="primary", (click)="paintAuto()") Auto
+        button(mat-raised-button, color="primary", (click)="paintSave()") Save
+        button(mat-raised-button, color="primary", (click)="paintErase()") Erase
+        a#link
+
+    .canvas-container
+        canvas#canvas

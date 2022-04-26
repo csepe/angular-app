@@ -1,0 +1,44 @@
+.card-view {
+    text-align: center;
+    columns: 5 300px;
+    column-gap: 0;
+
+    .mat-card {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            opacity: 0;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+        }
+
+        &:hover {
+            h1 {
+                opacity: 1;
+            }
+        }
+
+        .title {
+            font-weight: 500;
+        }
+    }
+}

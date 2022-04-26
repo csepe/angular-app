@@ -1,0 +1,39 @@
+.content
+    app-search-field(
+        [(searchInput)]="searchInput",
+        (searchCallback)="parseChannel(searchInput)"
+    )
+
+    .yt-info
+        mat-card.yt-info-channel(*ngIf="apiData.items")
+            mat-card-header
+                div(mat-card-avatar,  [ngStyle]="{'background-image': 'url(' + apiData.items[0].snippet.thumbnails.high.url + ')'}")
+                mat-card-title {{apiData.items[0].snippet.title}}
+                mat-card-subtitle 
+                    a(href="https://www.youtube.com/c/{{apiData.items[0].snippet.customUrl}}", target="_blank") https://www.youtube.com/c/{{apiData.items[0].snippet.customUrl}}
+            mat-card-content
+                p {{apiData.items[0].snippet.description}}
+            .yt-info-channel-stat
+                p 
+                    mat-icon remove_red_eye
+                    span {{apiData.items[0].statistics.viewCount | number}}
+                p 
+                    mat-icon supervisor_account
+                    span {{apiData.items[0].statistics.subscriberCount | number}}
+                p 
+                    mat-icon play_circle_outline
+                    span {{apiData.items[0].statistics.videoCount | number}}
+                p 
+                    mat-icon comment
+                    span {{apiData.items[0].statistics.commentCount | number}}
+
+        .yt-info-videos(*ngIf="apiData.videos")
+            mat-card.yt-info-video(*ngFor="let video of apiData.videos.items")
+                .video-preview([ngStyle]="{'background-image': 'url(' + video.snippet.thumbnails.high.url + ')'}")
+                div
+                    mat-card-header
+                        mat-card-title {{video.snippet.title}}
+                        mat-card-subtitle 
+                            a([href]="'https://www.youtube.com/watch?v=' + video.snippet.resourceId.videoId", target="_blank") {{'https://www.youtube.com/watch?v=' + video.snippet.resourceId.videoId}}
+                    mat-card-content
+                        p {{video.snippet.description}}

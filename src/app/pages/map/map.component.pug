@@ -1,0 +1,35 @@
+
+mat-drawer-container(autosize, hasBackdrop="false")
+    mat-drawer(#drawer, [opened]="drawerOpened", (openedStart)="sideNavOpened()")
+        div(style="padding: 20px 10px;")
+            h3 {{mapData?.title}}
+            p {{mapData?.description}}
+            p Összesen: {{mapData?.markersTotal}} db
+        div
+            mat-nav-list
+                p Legközelebbi pontok
+                a(*ngFor="let nearestMarker of nearestMarkers", mat-list-item, (click)="mapService.goToMarker(nearestMarker.marker)") {{ nearestMarker.marker.title }} - {{nearestMarker.distance | number}}m 
+
+    button.mat-drawer-button(type="button", mat-icon-button, (click)="drawer.toggle()")
+        mat-icon menu
+
+    .map-container
+        .map-controls
+
+            ng-container(*ngFor="let mapControl of mapService.mapControls")
+                button(*ngIf="!mapControl.menuItems", mat-icon-button, (click)="getMapServiceFunction(mapControl.id)",
+                    matTooltip="{{mapControl.title}}")
+                    mat-icon {{mapControl.icon}}
+
+                ng-container(*ngIf="mapControl.menuItems")
+                    button([matMenuTriggerFor]="menu", mat-icon-button, matTooltip="{{mapControl.title}}")
+                        mat-icon {{mapControl.icon}}
+
+                    mat-menu(#menu="matMenu")
+                        button(mat-menu-item, *ngFor="let menuItem of mapControl.menuItems",
+                            (click)="getMapServiceFunction(mapControl.id, menuItem.id ? menuItem.id : menuItem.title)")
+
+                            mat-icon {{menuItem.icon?menuItem.icon:'layers'}}
+                            span {{menuItem.title}}
+
+        #map(#map, [ngStyle]="backgroundColor")

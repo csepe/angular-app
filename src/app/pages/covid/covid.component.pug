@@ -1,0 +1,14 @@
+.container
+    mat-card
+        div(*ngIf="covidToday")
+            mat-card-header
+                mat-card-title(i18n) Koronavírus stat
+                mat-card-subtitle {{covidToday.date | date}}
+                br
+                p(i18n) Napi esetszám: {{covidToday.daily}}
+                p(i18n) Napi halálozás: {{covidToday.deaths}}
+            hr
+            
+            app-chart(*ngIf="chartData.dataSets", [data]="chartData")
+            app-chart(*ngIf="chartData2.dataSets", [data]="chartData2")
+

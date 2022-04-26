@@ -1,0 +1,19 @@
+.container
+
+    textarea.editor(
+        matInput,
+        placeholder="String", 
+        [(ngModel)]="text", 
+        name="text", 
+        spellcheck="false", 
+        (ngModelChange)="textChanged()",
+        [class]="mode"
+    )
+    
+    .controls
+        button(
+            mat-raised-button, 
+            color="primary", 
+            *ngFor="let control of controls", 
+            (click)="runCmd(control.cmd)"
+        ) {{control.name}}

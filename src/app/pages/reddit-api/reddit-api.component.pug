@@ -1,0 +1,18 @@
+.content
+    app-search-field(
+        [(searchInput)]="searchInput", 
+        [errorMessage]="apiUrlError",
+        (searchCallback)="getApiData(searchInput)")
+
+    .card-view(*ngIf="apiData && apiData.data")
+        //ng-container(*ngFor="let item of apiData")
+            mat-card(*ngIf="item.img && !item.hidden")
+                a([href]="'https://www.reddit.com' + item.permalink", target="_blank")
+                    h1 {{item.title}}
+                img([src]="item.img", mat-card-image, (error)="filterImage(item)")
+
+        ng-container(*ngFor="let item of apiData.data.children")
+            mat-card(*ngIf="item.data.thumbnail && !item.hidden")
+                a([href]="'https://www.reddit.com' + item.data.permalink", target="_blank")
+                    h1 {{item.data.title}}
+                img([src]="item.data.url", (error)="filterImage(item)")

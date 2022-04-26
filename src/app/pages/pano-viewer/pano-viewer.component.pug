@@ -1,0 +1,19 @@
+mat-drawer-container
+    mat-drawer(mode="side", opened)
+        mat-selection-list(#fonts, [multiple]="false", (selectionChange)="showPano(fonts.selectedOptions.selected[0]?.value)")
+            mat-list-option(*ngFor="let pano of panos", [value]="pano.url") {{pano.title}}
+
+        .input-with-button
+            input(
+                matInput, 
+                [(ngModel)]="selectedPlace",
+                (keydown.enter)="showStreetViewPano(selectedPlace)"
+            )
+            button(
+                mat-stroked-button, 
+                (click)="showStreetViewPano(selectedPlace)",
+            ) Search
+
+    mat-drawer-content
+        #panoContainer([ngClass]="{'active': !showStreetViewPanoContainer}")
+        #streetViewPanoContainer([ngClass]="{'active': showStreetViewPanoContainer}")

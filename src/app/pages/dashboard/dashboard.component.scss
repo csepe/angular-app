@@ -1,0 +1,64 @@
+.dashboard {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
+
+    .mat-card {
+        //width: 47%;
+        //margin: 0 1% 2% 1%;
+        margin: 0;
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        min-height: 300px;
+    }
+
+    .mat-card-subtitle {
+        margin-bottom: 0;
+    }
+
+    .chart .chart-container {
+        height: 200px;
+    }
+}
+
+.blur-cards {
+    text-align: center;
+
+    .blur-card {
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: 8px 2px 27px 8px #d6d6d6;
+        padding: 50px 50px 80px 50px;
+        margin: 30px;
+        border-radius: 30px;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+
+        .layer {
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(20px);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        img {
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+    }
+}

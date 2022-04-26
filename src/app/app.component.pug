@@ -1,0 +1,19 @@
+mat-toolbar.header(color="primary", class="mat-elevation-z4")
+  .header-title
+    button(mat-icon-button)
+      mat-icon menu
+    h3 {{activeRoute}}
+  .header-menu
+    ng-container(*ngFor="let route of routes; let i = index")
+      button(*ngIf="!route.children && !route.data.hideInMenu", mat-button, routerLink="{{route.path}}", routerLinkActive="active") {{route.data.title}}
+      ng-container(*ngIf="route.children && !route.data.hideInMenu")
+
+        button(#button, mat-button, [matMenuTriggerFor]="menu", #menuTrigger="matMenuTrigger", (mouseenter)="openResourceMenu(menuTrigger); recheckIfInMenu = true", (mouseleave)="closeResourceMenu(menuTrigger); recheckIfInMenu = false") {{route.data.title}}
+        
+        mat-menu(#menu="matMenu", [overlapTrigger]="false")
+          span((mouseenter)="recheckIfInMenu = true", (mouseleave)="closeResourceMenu(menuTrigger); recheckIfInMenu = false")
+            button(*ngFor="let childRoute of route.children", mat-menu-item, routerLink="{{childRoute.path}}", routerLinkActive="active") {{childRoute.data.title}}
+
+
+.content
+  router-outlet

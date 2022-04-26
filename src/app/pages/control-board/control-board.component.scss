@@ -1,0 +1,18 @@
+.control-board {
+    .mat-card {
+        button {
+            margin: 0 20px 10px 0;
+        }
+    }
+    app-color-picker {
+        display: inline-block;
+    }
+    .control-container {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+    }
+    .mat-slider {
+        width: 100%;
+    }
+}

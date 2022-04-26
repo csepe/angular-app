@@ -1,0 +1,13 @@
+.editors
+    .editor 
+        span HTML
+        ngx-codemirror#editorHTML([(ngModel)]="codeHTML", [options]="optionsHTML", (cursorActivity)="onChange()")
+    .editor
+        span JS
+        ngx-codemirror#editorJS([(ngModel)]="codeJS", [options]="optionsJS", (cursorActivity)="onChange()")
+    .editor
+        span CSS
+        ngx-codemirror#editorCSS([(ngModel)]="codeCSS", [options]="optionsCSS", (cursorActivity)="onChange()")
+    .editor
+        span Output
+        iframe#preview([src]="iframeContent")

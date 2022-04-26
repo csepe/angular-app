@@ -1,0 +1,8 @@
+main
+    h2 Map of the world
+    #worldMap([innerHTML]="worldMapSvg")
+    #countryMap(*ngIf="countryMapName")
+        p {{countryMapName}}
+        .close((click)="countryMapName=''") X
+        div([innerHTML]="countryMapSvg")
+    .helper(*ngIf="worldMapName") {{worldMapName}}

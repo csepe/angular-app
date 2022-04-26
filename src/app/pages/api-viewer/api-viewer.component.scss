@@ -1,0 +1,28 @@
+.view-mode {
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.card-view {
+    text-align: center;
+
+    .mat-card {
+        max-width: 300px;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        text-align: left;
+        margin: 0 10px 20px 10px;
+
+        .title {
+            font-weight: 500;
+        }
+    }
+}
+
+pre{
+    padding: 20px;
+    background-color: #eee;
+}

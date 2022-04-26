@@ -1,0 +1,16 @@
+.content
+    app-search-field(
+        [(searchInput)]="searchInput", 
+        [searchData]="apiData", 
+        (searchCallback)="getApiData()"
+    )
+
+    .container.mat-card-view
+        .card-view(*ngIf="apiData")
+            mat-card(*ngFor="let item of apiData")
+                h1
+                    a([href]="item?.link", target="_blank") {{item?.title}}
+                img(mat-card-image, *ngIf="item?.pagemap?.cse_image", [src]="item?.pagemap?.cse_image[0]?.src") 
+                mat-card-content
+                    p {{item?.snippet}}
+                

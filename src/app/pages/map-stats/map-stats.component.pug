@@ -1,0 +1,26 @@
+.page-container(*ngIf="mapData")
+    .grid.grid-2
+        div
+            mat-form-field(style="width:100%")
+                input(matInput, placeholder="Search", type="text", [(ngModel)]="searchInput")
+                button(mat-button, *ngIf="searchInput", matSuffix, mat-icon-button, aria-label="Clear", (click)="searchInput=''")
+                    mat-icon close
+
+            .scroll-container
+                //mat-selection-list(#shoes, [multiple]="false")
+                    mat-list-option(*ngFor="let marker of mapData.markers | searchFilter:searchInput", [value]="marker") {{marker.name}}
+                mat-accordion
+                    mat-expansion-panel(hideToggle, *ngFor="let marker of mapData.markers | searchFilter:searchInput")
+                        mat-expansion-panel-header
+                            mat-panel-title {{marker.name}}
+                        p This is the primary content of the panel.
+
+        div
+            h2 {{mapData.title}}
+            p {{mapData.description}}
+
+            h3 Layers
+            p(*ngFor="let folder of mapData.folders") {{folder.title}}: {{folder.total}}
+            p Total: {{mapData.markersTotal}}
+            
+            h3 Chart

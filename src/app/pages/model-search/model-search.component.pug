@@ -1,0 +1,14 @@
+.content
+    app-search-field(
+        [(searchInput)]="searchInput", 
+        [searchData]="apiData", 
+        (searchCallback)="getApiData()"
+    )
+
+    .container
+        .card-view(*ngIf="apiData")
+            ng-container(*ngFor="let item of apiData")
+                mat-card(*ngIf="!item.hidden", (click)="loadModel(item)")
+                    img([src]="item.thumbnail.url")
+
+        app-three-canvas([model]="selectedModel", [inputOptions]="options")

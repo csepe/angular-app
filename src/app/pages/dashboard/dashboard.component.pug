@@ -1,0 +1,25 @@
+.dashboard
+    mat-card
+        div(*ngIf="covidToday")
+            mat-card-header
+                mat-card-title(i18n) Koronavírus stat
+                mat-card-subtitle {{covidToday.date | date}}
+            hr
+            p(i18n) Napi esetszám: {{covidToday.daily}}
+            p(i18n) Napi halálozás: {{covidToday.deaths}}
+            app-chart(*ngIf="chartData.dataSets", [data]="chartData")
+
+        
+    mat-card
+        div(*ngIf="apiData")
+            mat-card-header
+                mat-card-title(i18n) Index Fuji
+                mat-card-subtitle {{apiData[0].date}}
+            hr
+            div([innerHtml]="apiData[0].html")
+
+    mat-card
+        app-chart(*ngIf="chartData2.dataSets", [data]="chartData2")
+    
+    mat-card
+        //app-spotify-player

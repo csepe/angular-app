@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+}
+
+.editor {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 70%;
+    float: left;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: inherit;
+
+    &.rovasIras {
+        font-family: 'HunRunes';
+    }
+}
+.controls {
+    width: 30%;
+    float: left;
+    padding: 10px;
+
+    button {
+        margin: 0 0 10px 0;
+        width: 100%;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}

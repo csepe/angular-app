@@ -1,0 +1,6 @@
+.container(*ngIf="apiData && apiData.data")
+    mat-card
+        h1 {{apiData.data[0].temp}} °C
+        p {{apiData.data[0].weather.description}}
+    mat-card
+        app-chart(*ngIf="chartData.dataSets", [data]="chartData")

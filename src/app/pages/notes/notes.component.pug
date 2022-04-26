@@ -1,0 +1,14 @@
+.notes-container(cdkDropListGroup)
+    div.notes-column(*ngFor="let folder of folders")
+        h2 {{folder.title}}
+        div(
+            cdkDropList,
+            [id]="folder.title",
+            [cdkDropListData]="folder.items",
+           
+            class="notes",
+            (cdkDropListDropped)="drop($event)")
+            div.note(*ngFor="let note of folder.items", cdkDrag, [ngClass]="note.color") 
+                h1 {{note.title}}
+                p  {{note.text}}
+            .drag-placeholder(*cdkDragPlaceholder)

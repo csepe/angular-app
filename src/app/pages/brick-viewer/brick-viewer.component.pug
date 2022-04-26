@@ -1,0 +1,9 @@
+.container
+    brick-viewer(src="http://omr.ldraw.org/media/LDraw%20models/1632-1 - Motor Boat/1632-1 - Motor Boat.mpd")
+
+    canvas(#canvas, width="600", height="300")
+    #controls
+        button(mat-raised-button, (click)="restart()") restart
+        button(mat-raised-button, (click)="stepBack()") stepBack
+        button(mat-raised-button, (click)="stepForward()") stepForward
+        button(mat-raised-button, (click)="resetCamera()") resetCamera

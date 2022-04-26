@@ -1,0 +1,32 @@
+mat-drawer-container
+    mat-drawer(mode="side", opened)
+        mat-selection-list(#fonts, [multiple]="false", (selectionChange)="changeFont(fonts.selectedOptions.selected[0]?.value)")
+            mat-list-option(*ngFor="let font of selectableFonts", [value]="font") {{font}}
+
+    mat-drawer-content
+        div.font-viewer
+            div(*ngIf="selectedFont")
+                mat-form-field.slider(*ngFor="let style of selectedFont?.axes?.reverse()")
+                    mat-label {{Styles[style.tag]}}
+                    mat-slider(
+                        [min]="style.min",
+                        [max]="style.max",
+                        [step]="1",
+                        [thumbLabel]="true",
+                        [value]="style.defaultValue",
+                        (input)="changeStyle(style.tag, $event.value)"
+                    )
+                    textarea(matInput, hidden)
+                    .slider__labels
+                        span.slider__min-label {{style.min}}
+                        span.slider__max-label {{style.max}}
+            hr
+            .container
+                textarea#text(
+                    name="message",
+                    rows="2",
+                    spellcheck="false",
+                    [(ngModel)]="text",
+                    #message='ngModel',
+                    [ngStyle]="cssFontStyle"
+                )

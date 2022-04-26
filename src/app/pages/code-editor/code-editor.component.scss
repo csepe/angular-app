@@ -1,0 +1,25 @@
+.editors {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+
+    .editor {
+        width: 50%;
+        height: 50%;
+        display: block;
+        float: left;
+
+        span {
+            padding: 5px 10px 4px 10px;
+            display: block;
+            background-color: #2b373c;
+            border-bottom: 1px solid #fff;
+            color: #fff;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+        }
+    }
+}
